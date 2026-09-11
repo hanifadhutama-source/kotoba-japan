@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Kota Kata: Petualangan 3D Literasi & Bahasa Indonesia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <!-- 3D WebGL Canvas will be injected here -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Top Navigation / Game HUD -->
+    <header class="hud-top">
+      <div class="hud-brand">
+        <div class="brand-icon">🏛️</div>
+        <div>
+          <h1 class="brand-title">Kota Kata: Literasi 3D</h1>
+          <p class="brand-sub">Jelajahi kota, temukan warga, dan selesaikan 9 misi!</p>
+        </div>
+      </div>
+
+      <div class="hud-stats">
+        <div class="stat-badge" id="quest-tracker-badge">
+          <span class="stat-icon">📜</span>
+          <span class="stat-label">Misi Selesai:</span>
+          <strong id="quest-counter">0 / 9</strong>
+        </div>
+        <button id="btn-toggle-questlist" class="hud-btn" title="Buka Daftar Misi">
+          📋 <span class="btn-text">Buku Misi</span>
+        </button>
+        <button id="btn-toggle-settings" class="hud-btn" title="Pengaturan & Jeda (Esc)">
+          ⚙️ <span class="btn-text">Pengaturan</span>
+        </button>
+        <button id="btn-audio-toggle" class="hud-btn" title="Atur Suara">
+          🔊 <span class="btn-text">Suara: Nyala</span>
+        </button>
+        <button id="btn-fullscreen" class="hud-btn" title="Layar Penuh (F)">
+          ⛶ <span class="btn-text">Layar Penuh</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Proximity Interaction Prompt [E] -->
+    <div id="interaction-prompt" class="interaction-prompt hidden">
+      <div class="prompt-key">E</div>
+      <div class="prompt-text">Bicara dengan <span id="prompt-npc-name">Warga</span></div>
+    </div>
+
+    <!-- Reticle Crosshair (Center) -->
+    <div class="crosshair"></div>
+
+    <!-- Mobile On-Screen Controls Layer -->
+    <div id="mobile-controls" class="mobile-controls">
+      <!-- Virtual Joystick Zone (Bottom Left) -->
+      <div id="mobile-joystick-zone" class="joystick-zone">
+        <div id="joystick-base" class="joystick-base">
+          <div id="joystick-thumb" class="joystick-thumb"></div>
+        </div>
+      </div>
+
+      <!-- Action Buttons (Bottom Right) -->
+      <div class="mobile-actions">
+        <button id="btn-mobile-interact" class="mobile-btn btn-interact hidden" aria-label="Bicara dengan NPC">
+          <span class="btn-icon">💬</span>
+          <span class="btn-label">Bicara</span>
+        </button>
+        <button id="btn-mobile-jump" class="mobile-btn btn-jump" aria-label="Lompat">
+          <span class="btn-icon">🦘</span>
+          <span class="btn-label">Lompat</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Controls Overlay Helper (Bottom Left) -->
+    <div class="controls-guide">
+      <div class="guide-title">🎮 Panduan Kontrol:</div>
+      
+      <!-- Mini Keyboard Dual Visual: WASD & Arrow Keys -->
+      <div class="controls-preview-grid">
+        <div class="keyboard-preview">
+          <div class="preview-mini-label">Jalan:</div>
+          <div class="key-row-center">
+            <div class="key-cap" id="keycap-w">W</div>
+          </div>
+          <div class="key-row">
+            <div class="key-cap" id="keycap-a">A</div>
+            <div class="key-cap" id="keycap-s">S</div>
+            <div class="key-cap" id="keycap-d">D</div>
+          </div>
+        </div>
+
+        <div class="keyboard-preview">
+          <div class="preview-mini-label">Kamera:</div>
+          <div class="key-row-center">
+            <div class="key-cap" id="keycap-arrowup">↑</div>
+          </div>
+          <div class="key-row">
+            <div class="key-cap" id="keycap-arrowleft">←</div>
+            <div class="key-cap" id="keycap-arrowdown">↓</div>
+            <div class="key-cap" id="keycap-arrowright">→</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-list">
+        <div class="guide-row"><span class="key-badge">W A S D</span> : <strong>Jalan / Gerak Karakter</strong></div>
+        <div class="guide-row"><span class="key-badge">↑ ↓ ← →</span> : <strong>Putar / Geser Kamera</strong></div>
+        <div class="guide-row"><span class="key-badge">Mouse Drag</span> : <strong>Rotasi Kamera</strong></div>
+        <div class="guide-row"><span class="key-badge">Spasi</span> : <strong>Lompat</strong></div>
+        <div class="guide-row"><span class="key-badge">E</span> : <strong>Bicara NPC / Warga</strong></div>
+        <div class="guide-row"><span class="key-badge">Esc / P</span> : <strong>Jeda & Pengaturan</strong></div>
+      </div>
+    </div>
+
+    <!-- Dialogue Box (Bottom Center) -->
+    <div id="dialogue-overlay" class="dialogue-overlay hidden">
+      <div class="dialogue-card">
+        <div class="dialogue-header">
+          <div class="npc-avatar-box">
+            <div id="npc-avatar-icon" class="avatar-emoji">🧑‍🏫</div>
+          </div>
+          <div class="npc-meta">
+            <h3 id="npc-dialogue-name" class="npc-name">Bu Rahma</h3>
+            <span id="npc-dialogue-role" class="npc-role">Pustakawan Kota</span>
+          </div>
+          <div id="dialogue-quest-badge" class="quest-tag">Misi #1</div>
+        </div>
+
+        <div class="dialogue-body">
+          <p id="dialogue-speech-text" class="speech-text">...</p>
+        </div>
+
+        <div class="dialogue-footer">
+          <button id="dialogue-cancel-btn" class="btn btn-secondary">Nanti Dulu</button>
+          <button id="dialogue-action-btn" class="btn btn-primary">Mulai Tantangan! 🚀</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minigame Modal Overlay (Center Screen) -->
+    <div id="minigame-overlay" class="minigame-overlay hidden">
+      <div class="minigame-container">
+        <!-- Minigame content will be dynamically generated by MinigameController -->
+        <div id="minigame-content"></div>
+      </div>
+    </div>
+
+    <!-- Quest List Sidebar / Modal -->
+    <div id="quest-book-modal" class="modal-overlay hidden">
+      <div class="quest-book-card">
+        <div class="modal-header">
+          <h2>📜 Buku Catatan 9 Misi Kota</h2>
+          <button id="btn-close-questbook" class="btn-icon">✕</button>
+        </div>
+        <p class="modal-desc">Selesaikan semua tantangan dari 9 tokoh masyarakat untuk mendapatkan gelar <strong>Duta Literasi Kota</strong>!</p>
+        <div id="quest-list-items" class="quest-list-grid"></div>
+      </div>
+    </div>
+
+    <!-- Settings & Pause Modal -->
+    <div id="settings-modal" class="modal-overlay hidden">
+      <div class="settings-card">
+        <div class="modal-header">
+          <h2>⚙️ Pengaturan & Jeda Permainan</h2>
+          <button id="btn-close-settings" class="btn-icon">✕</button>
+        </div>
+        <p class="modal-desc">Sesuaikan kontrol, sensitivitas kamera, dan audio sesuai kenyamanan bermain Anda.</p>
+        
+        <div class="settings-grid">
+          <!-- Sensitivitas Kamera -->
+          <div class="setting-item">
+            <div class="setting-label-row">
+              <label for="slider-sensitivity">🎯 Sensitivitas Kamera:</label>
+              <span id="label-sensitivity-val" class="setting-val-badge">1.0x</span>
+            </div>
+            <input type="range" id="slider-sensitivity" min="0.2" max="3.0" step="0.1" value="1.0" class="setting-slider" />
+            <div class="setting-hint">Atur kecepatan rotasi kamera saat mouse digeser.</div>
+          </div>
+
+          <!-- Kecepatan Gerak -->
+          <div class="setting-item">
+            <div class="setting-label-row">
+              <label for="slider-speed">🏃 Kecepatan Gerak Karakter:</label>
+              <span id="label-speed-val" class="setting-val-badge">8.5 m/s</span>
+            </div>
+            <input type="range" id="slider-speed" min="5.0" max="15.0" step="0.5" value="8.5" class="setting-slider" />
+            <div class="setting-hint">Kecepatan lari karakter saat menekan tombol WASD.</div>
+          </div>
+
+          <!-- Volume Suara Efek -->
+          <div class="setting-item">
+            <div class="setting-label-row">
+              <label for="slider-volume">🔊 Volume Efek Suara:</label>
+              <span id="label-volume-val" class="setting-val-badge">100%</span>
+            </div>
+            <input type="range" id="slider-volume" min="0" max="100" step="5" value="100" class="setting-slider" />
+            <div class="setting-hint">Kekerasan suara langkah, dialog, dan efek minigame.</div>
+          </div>
+
+          <!-- Invert Sumbu Kamera -->
+          <div class="setting-item">
+            <div class="setting-title">🔄 Inversi Kontrol Kamera:</div>
+            <div class="setting-checkbox-row">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="chk-invert-pitch" />
+                <span>Invert Sumbu Y (Vertikal Atas/Bawah)</span>
+              </label>
+            </div>
+            <div class="setting-checkbox-row" style="margin-top: 8px;">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="chk-invert-yaw" />
+                <span>Invert Sumbu X (Horizontal Kiri/Kanan)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Cepat -->
+        <div class="settings-actions">
+          <button id="btn-respawn" class="btn btn-secondary">📍 Ke Alun-Alun</button>
+          <button id="btn-reset-quests" class="btn btn-secondary" style="color: #f87171;">🔄 Reset Misi</button>
+          <button id="btn-resume-game" class="btn btn-primary" style="margin-left: auto;">▶️ Lanjutkan Permainan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Victory Certificate Modal -->
+    <div id="victory-modal" class="modal-overlay hidden">
+      <div class="victory-card">
+        <div class="victory-badge">🏆 SELAMAT! 🏆</div>
+        <h2>Pahlawan Literasi Kota Cerdas</h2>
+        <p>Luar biasa! Anda telah menyelesaikan seluruh <strong>9 Misi Edukasi</strong>: Membedakan kata baku KBBI, membongkar hoaks di era digital, dan merangkai kalimat efektif bahasa Indonesia.</p>
+        <div class="victory-stats">
+          <div class="v-stat"><span>Total Misi:</span> <strong>9 / 9 Selesai</strong></div>
+          <div class="v-stat"><span>Predikat:</span> <strong>Duta Literasi Berprestasi</strong></div>
+        </div>
+        <button id="btn-continue-explore" class="btn btn-primary">Lanjut Berkeliling Kota ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
