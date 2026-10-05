@@ -29,31 +29,31 @@ export class WanderingNPCManager {
     ];
 
     this.citizenProfiles = [
-      { name: 'Mas Dimas', role: 'Mahasiswa Sastra', emoji: '🧑‍🎓', text: 'Halo! Membaca buku adalah jendela dunia. Jangan lupa pelajari kata baku ya!' },
-      { name: 'Mbak Ayu', role: 'Desainer Grafis', emoji: '👩‍🎨', text: 'Hai! Kota ini penuh warna dan inspirasi. Selalu jaga kesantunan berbahasa!' },
-      { name: 'Pak Tono', role: 'Pedagang Kopi', emoji: '☕', text: 'Selamat pagi! Sedang keliling kota? Jangan lupa mampir ke alun-alun pusat!' },
-      { name: 'Bu Sari', role: 'Pecinta Tanaman', emoji: '🌱', text: 'Taman kota ini sangat rindang. Udara segar membuat pikiran jernih saat belajar.' },
-      { name: 'Kang Asep', role: 'Pemerhati Kota', emoji: '🚶‍♂️', text: 'Tertib menyeberang di zebra cross ya! Jadilah warga yang sadar aturan.' },
-      { name: 'Kak Rian', role: 'Penyiar Musik', emoji: '🎧', text: 'Halo kawan! Saring sebelum sharing informasi di media sosial ya!' },
-      { name: 'Mbak Tiara', role: 'Relawan Literasi', emoji: '📚', text: 'Sudah selesaikan misi Bu Rahma di perpustakaan? Kuisnya sangat seru!' },
-      { name: 'Pak Bambang', role: 'Warga Senior', emoji: '👴', text: 'Bahasa Indonesia menyatukan ribuan pulau di nusantara kita. Banggalah berbahasa Indonesia!' },
-      { name: 'Adit', role: 'Pelajar Cerdas', emoji: '🎒', text: 'Aku sedang menghafal kata-kata baku di KBBI untuk ujian sekolah nanti!' },
-      { name: 'Nadia', role: 'Fotografer Jalanan', emoji: '📷', text: 'Gedung-gedung tinggi di distrik timur laut keren sekali untuk difoto!' },
-      { name: 'Fajar', role: 'Pengendara Sepeda', emoji: '🚴', text: 'Kota ini luas sekali sekarang! Jalan-jalan sampai ke ring road luar yuk.' },
-      { name: 'Lestari', role: 'Guru Muda', emoji: '👩‍🏫', text: 'Struktur kalimat SPOK membuat tulisan kita rapi dan mudah dipahami pembaca.' }
+      { name: '田中さん · Tanaka', role: 'Salaryman', emoji: '💼', text: 'こんにちは！\nHalo!' },
+      { name: '佐藤さん · Sato', role: 'Office Worker', emoji: '👩‍💼', text: 'いい天気ですね。\nCuacanya bagus ya.' },
+      { name: '鈴木さん · Suzuki', role: 'Shop Staff', emoji: '🏪', text: 'ありがとうございます。\nTerima kasih.' },
+      { name: '山田さん · Yamada', role: 'Commuter', emoji: '🚶', text: '駅はどこですか？\nDi mana stasiunnya?' },
+      { name: 'さくら · Sakura', role: 'Student', emoji: '🎒', text: '学校へ行きます。\nSaya pergi ke sekolah.' },
+      { name: 'ジョン · John', role: 'Tourist', emoji: '📷', text: 'すごい！\nLuar biasa!' },
+      { name: 'ケンジ · Kenji', role: 'Delivery Worker', emoji: '📦', text: 'お疲れ様です。\nKerja yang bagus hari ini.' },
+      { name: 'ひろし · Hiroshi', role: 'Teacher', emoji: '👨‍🏫', text: 'がんばってください。\nSemangat ya.' },
+      { name: 'エミ · Emi', role: 'Cafe Staff', emoji: '☕', text: 'いらっしゃいませ。\nSelamat datang.' },
+      { name: 'ハルト · Haruto', role: 'Student', emoji: '🎮', text: 'またね！\nSampai jumpa!' },
+      { name: 'ユイ · Yui', role: 'Tourist', emoji: '🌸', text: 'きれいですね。\nCantik ya.' },
+      { name: 'リク · Riku', role: 'Commuter', emoji: '🎧', text: 'すみません。\nPermisi / Maaf.' }
     ];
 
     this.chatBubbles = [
-      'Halo kawan! 👋',
-      'Ayo membaca 📖',
-      'Cek faktanya ya! 🛡️',
-      'Indahnya kota ini ✨',
-      'Santai sejenak ☕',
-      'Apotek atau apotik? 🤔',
-      'Tertib di trotoar 👍',
-      'Semangat belajarnya! 🌟',
-      'Saring sebelum sharing! 📱',
-      'Kota Cerdas 2026 🏛️'
+      'こんにちは！\nHalo!',
+      'いい天気ですね。\nCuacanya bagus ya.',
+      'またね！\nSampai jumpa!',
+      'すごい！\nLuar biasa!',
+      'すみません。\nPermisi.',
+      'おいしい！\nEnak!',
+      'がんばって！\nSemangat!',
+      'ありがとうございます。\nTerima kasih.',
+      'どこですか？\nDi mana?',
+      'ええと...\nUmm...'
     ];
 
     this.spawnWanderingCitizens(36);
@@ -148,11 +148,23 @@ export class WanderingNPCManager {
     ctx.stroke();
 
     // Bubble text
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = 'bold 22px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(text, 128, 40);
+    
+    const lines = text.split('\n');
+    if (lines.length === 1) {
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 22px sans-serif';
+      ctx.fillText(lines[0], 128, 40);
+    } else {
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.fillText(lines[0], 128, 30);
+      
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = '16px sans-serif';
+      ctx.fillText(lines[1], 128, 54);
+    }
 
     texture.needsUpdate = true;
   }

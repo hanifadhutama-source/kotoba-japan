@@ -1,21 +1,23 @@
 :root {
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
+  --primary: #dc2626;
+  --primary-hover: #b91c1c;
   --accent-cyan: #06b6d4;
   --accent-amber: #f59e0b;
   --accent-emerald: #10b981;
   --accent-rose: #f43f5e;
-  --bg-dark: #090d16;
-  --bg-panel: rgba(15, 23, 42, 0.82);
-  --bg-card: rgba(30, 41, 59, 0.7);
+  --accent-gold: #ca8a04;
+  --bg-dark: #0d0a09;
+  --bg-panel: rgba(15, 10, 10, 0.84);
+  --bg-card: rgba(30, 20, 20, 0.70);
   --border-glass: rgba(255, 255, 255, 0.14);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 8px;
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', 'Noto Sans JP', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  --font-japanese: 'Noto Sans JP', sans-serif;
 }
 
 * {
@@ -86,7 +88,7 @@ body, html {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff, #a5b4fc);
+  background: linear-gradient(135deg, #ffffff, #fcd34d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -54,8 +54,8 @@ class GameApp {
   initScene() {
     // 1. Scene setup
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x87ceeb); // Bright stylized sky
-    this.scene.fog = new THREE.FogExp2(0x87ceeb, 0.008);
+    this.scene.background = new THREE.Color(0xd4e9f7); // Soft Tokyo morning sky
+    this.scene.fog = new THREE.FogExp2(0xd4e9f7, 0.008);
 
     // 2. Camera setup
     this.camera = new THREE.PerspectiveCamera(

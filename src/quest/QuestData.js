@@ -3,373 +3,450 @@ export const QUEST_DATA = [
   // ==================== KATEGORI 1: KATA BAKU VS TIDAK BAKU (KBBI) ====================
   {
     id: 1,
-    category: 'Kata Baku (KBBI)',
-    categoryBadge: '📚 Kategori 1: Kata Baku',
-    title: 'Apotek atau Apotik?',
+    category: 'Japanese Greetings',
+    categoryBadge: '🌸 Kategori 1: Greetings',
+    title: 'Basic Greetings',
     npc: {
-      name: 'Bu Rahma',
-      role: 'Pustakawan Kota',
+      name: 'Sensei',
+      role: 'Guru Bahasa',
       emoji: '🧑‍🏫',
-      shirtColor: 0xec4899, // Pink
-      pantsColor: 0x312e81,
-      pos: { x: -44, z: -38 }
+      shirtColor: 0x1e3a5f, // Navy
+      pantsColor: 0x0f172a,
+      pos: { x: -42, z: -55 } // Outside east face
     },
-    introDialogue: 'Halo anak muda! Di perpustakaan kota ini kita selalu menjunjung tinggi penggunaan ejaan baku sesuai KBBI. Bisakah kamu membantuku memilah kata baku yang tepat?',
-    completedDialogue: 'Terima kasih banyak! Pengetahuan kata bakumu sangat tajam. Terus lestarikan bahasa Indonesia yang baik dan benar ya!',
+    introDialogue: 'こんにちは！ (Konnichiwa!) Let\'s learn some basic Japanese greetings. Can you recognize these words?',
+    completedDialogue: 'Subarashii! (Luar biasa!) You have mastered the basic greetings. Keep exploring and learning!',
     isCompleted: false,
     minigameType: 'VOCAB_CHOICE',
     questions: [
       {
-        prompt: 'Mana bentuk penulisan tempat penjualan obat yang baku menurut KBBI?',
-        options: ['Apotek', 'Apotik'],
-        correctIndex: 0,
-        explanation: 'Bentuk baku adalah APOTEK (serapan dari bahasa Belanda "apotheek"). Ahlinya disebut "Apoteker".'
+        prompt: '「こんにちは」 (Konnichiwa) means...',
+        options: ['Good evening', 'Thank you', 'Hello', 'Good night'],
+        correctIndex: 2,
+        explanation: 'こんにちは (Konnichiwa) adalah salam umum yang berarti "Halo" atau "Selamat siang".'
       },
       {
-        prompt: 'Pilihlah bentuk kata kerja baku di bawah ini:',
-        options: ['Praktek', 'Praktik'],
+        prompt: '「ありがとう」 (Arigatou) means...',
+        options: ['Good morning', 'Thank you', 'Sorry', 'Goodbye'],
         correctIndex: 1,
-        explanation: 'Bentuk baku menurut KBBI adalah PRAKTIK, turunannya menjadi "Praktikum" dan "Praktisi".'
+        explanation: 'ありがとう (Arigatou) berarti "Terima kasih".'
       },
       {
-        prompt: 'Saat menunggu giliran loket perpustakaan, kita harus tertib...',
-        options: ['Antre', 'Antri'],
+        prompt: '「おはよう」 (Ohayou) means...',
+        options: ['Good morning', 'Good night', 'Hello', 'Excuse me'],
         correctIndex: 0,
-        explanation: 'Kata baku yang tepat adalah ANTRE (kata turunan: "mengantre", bukan "mengantri").'
+        explanation: 'おはよう (Ohayou) berarti "Selamat pagi".'
       }
     ]
   },
   {
     id: 2,
-    category: 'Kata Baku (KBBI)',
-    categoryBadge: '📚 Kategori 1: Kata Baku',
-    title: 'Koreksi Spanduk Kota',
+    category: 'Japanese Numbers',
+    categoryBadge: '🏪 Kategori 2: Numbers',
+    title: 'Numbers & Shopping',
     npc: {
-      name: 'Pak Budi',
-      role: 'Arsitek Tata Kota',
-      emoji: '👷‍♂️',
-      shirtColor: 0xf59e0b, // Amber
+      name: 'Kenji',
+      role: 'Konbini Clerk',
+      emoji: '💁',
+      shirtColor: 0x16a34a, // Green (Konbini theme)
       pantsColor: 0x1f2937,
-      pos: { x: 44, z: -38 }
+      pos: { x: 82, z: -10 } // Safe on Konbini pedestrian frontage
     },
-    introDialogue: 'Wah kebetulan sekali! Saya sedang mengecek papan reklame dan pengumuman di sudut kota. Banyak yang salah eja nih. Mau bantu cek?',
-    completedDialogue: 'Luar biasa! Sekarang plang nama dan reklame di kota kita sudah menggunakan tata kata baku yang terpercaya.',
+    introDialogue: 'いらっしゃいませ！ (Irasshaimase!) Welcome! Knowing numbers is essential for shopping. Can you help me review these basic numbers?',
+    completedDialogue: 'Perfect! You are now ready to shop in Japan. Let me know if you need anything else!',
     isCompleted: false,
     minigameType: 'VOCAB_CHOICE',
     questions: [
       {
-        prompt: 'Papan nama kantor: "Pusat Penelitian dan ... Lingkungan Hidup"',
-        options: ['Analisa', 'Analisis'],
+        prompt: '「いち」 (Ichi) means...',
+        options: ['1', '2', '3', '4'],
+        correctIndex: 0,
+        explanation: 'いち (Ichi) berarti angka "1".'
+      },
+      {
+        prompt: '「さん」 (San) means...',
+        options: ['2', '3', '4', '5'],
         correctIndex: 1,
-        explanation: 'Bentuk baku dalam KBBI adalah ANALISIS (diserap dari bahasa Inggris "analysis").'
+        explanation: 'さん (San) berarti angka "3".'
       },
       {
-        prompt: 'Spanduk imbauan: "Menjaga kebersihan taman adalah ... kita bersama."',
-        options: ['Tanggung Jawab', 'Tanggungjawab'],
-        correctIndex: 0,
-        explanation: 'Penulisan gabungan kata dasar dipisah: TANGGUNG JAWAB (kecuali mendapat imbuhan gabung sekaligus: "pertanggungjawaban").'
-      },
-      {
-        prompt: 'Tanda pengenal: "Surat bukti kelulusan / ... resmi sekolah"',
-        options: ['Ijazah', 'Ijasah'],
-        correctIndex: 0,
-        explanation: 'Ejaan yang sesuai dengan KBBI adalah IJAZAH menggunakan huruf "z".'
+        prompt: '「ご」 (Go) means...',
+        options: ['4', '5', '6', '7'],
+        correctIndex: 1,
+        explanation: 'ご (Go) berarti angka "5".'
       }
     ]
   },
   {
     id: 3,
-    category: 'Kata Baku (KBBI)',
-    categoryBadge: '📚 Kategori 1: Kata Baku',
-    title: 'Serapan Kata Modern',
+    category: 'Japanese Characters',
+    categoryBadge: '✏️ Kategori 3: Hiragana',
+    title: 'Hiragana Basics',
     npc: {
-      name: 'Dedi',
-      role: 'Siswa Peneliti Muda',
+      name: 'Senpai',
+      role: 'Tutor Senior',
       emoji: '🎒',
       shirtColor: 0x3b82f6, // Blue
       pantsColor: 0x1e293b,
-      pos: { x: -44, z: 38 }
+      pos: { x: -36, z: -48 } // Education district approach
     },
-    introDialogue: 'Hai teman! Aku sedang merapikan makalah ilmiah. Banyak kata serapan yang ragu-ragu nih ejaannya. Bisakah kita diskusikan bersama?',
-    completedDialogue: 'Keren banget! Makalah ilmiahku sekarang siap dikumpulkan tanpa salah eja kata serapan.',
+    introDialogue: 'こんにちは！ To read Japanese, you must know Hiragana. Let\'s start with some basic characters (a, i, u, ka, ko). Can you read them?',
+    completedDialogue: 'Yatta! You read them perfectly. Keep practicing Hiragana every day!',
     isCompleted: false,
     minigameType: 'VOCAB_CHOICE',
     questions: [
       {
-        prompt: 'Mana penulisan kata turunan serapan yang benar?',
-        options: ['Aktivitas', 'Aktifitas'],
+        prompt: '「あ」 dibaca...',
+        options: ['a', 'i', 'u', 'e'],
         correctIndex: 0,
-        explanation: 'Kata dasarnya "aktif", tetapi jika mendapat sufiks "-itas", huruf "f" berubah menjadi "v": AKTIVITAS.'
+        explanation: '「あ」 dibaca "a".'
       },
       {
-        prompt: 'Kata serapan untuk jadwal kegiatan acara:',
-        options: ['Jadual', 'Jadwal'],
+        prompt: '「い」 dibaca...',
+        options: ['a', 'i', 'u', 'e'],
         correctIndex: 1,
-        explanation: 'Bentuk baku menurut KBBI adalah JADWAL (bukan jadual).'
+        explanation: '「い」 dibaca "i".'
       },
       {
-        prompt: 'Penulisan kata untuk menggambarkan hal yang sungguh-sungguh:',
-        options: ['Sekadar', 'Sekedar'],
+        prompt: '「う」 dibaca...',
+        options: ['o', 'e', 'u', 'a'],
+        correctIndex: 2,
+        explanation: '「う」 dibaca "u".'
+      },
+      {
+        prompt: '「か」 dibaca...',
+        options: ['ki', 'ku', 'ko', 'ka'],
+        correctIndex: 3,
+        explanation: '「か」 dibaca "ka".'
+      },
+      {
+        prompt: '「こ」 dibaca...',
+        options: ['ko', 'ke', 'ka', 'ku'],
         correctIndex: 0,
-        explanation: 'Bentuk bakunya adalah SEKADAR (karena kata dasarnya "kadar", bukan "kedar").'
+        explanation: '「こ」 dibaca "ko".'
       }
     ]
   },
 
-  // ==================== KATEGORI 2: DETEKSI HOAKS & LITERASI DIGITAL ====================
   {
     id: 4,
-    category: 'Deteksi Hoaks',
-    categoryBadge: '🛡️ Kategori 2: Deteksi Hoaks',
-    title: 'Analisis Headline Viral',
+    category: 'Japanese Vocabulary',
+    categoryBadge: '📖 Kategori 4: Vocab',
+    title: 'Everyday Vocabulary',
     npc: {
-      name: 'Citra',
-      role: 'Jurnalis Investigasi',
-      emoji: '👩‍💻',
+      name: 'Haruka',
+      role: 'Tour Guide',
+      emoji: '👩‍💼',
       shirtColor: 0x06b6d4, // Cyan
       pantsColor: 0x0f172a,
-      pos: { x: 44, z: 42 }
+      pos: { x: 10, z: -130 } // Tokyo Station Plaza
     },
-    introDialogue: 'Halo! Era media sosial dipenuhi arus berita cepat, tapi banyak yang hoaks atau clickbait provokatif. Sebagai calon netizen cerdas, ayo uji kepekaanmu!',
-    completedDialogue: 'Tajam sekali analisismu! Kamu tidak mudah termakan judul heboh atau kabar burung di lini masa!',
+    introDialogue: 'ようこそ！ (Welcome!) As you explore the city, you\'ll need to know everyday words. Let\'s practice some essential vocabulary!',
+    completedDialogue: 'Subarashii! Now you can easily find water, food, and important places in the city.',
     isCompleted: false,
-    minigameType: 'HOAX_DETECTOR',
+    minigameType: 'VOCAB_CHOICE',
     questions: [
       {
-        headline: 'VIRAL & MENGHEBOHKAN! Makan Buah Ini Langsung Menyembuhkan Semua Penyakit Jantung dalam 1 Jam!',
-        source: 'Pesan Teruskan Grup Media Sosial Tanpa Nama Penulis',
-        clues: [
-          'Judul provokatif & menggunakan huruf kapital berlebih',
-          'Klaim medis instan tanpa rujukan jurnal kesehatan atau Kemenkes',
-          'Tidak mencantumkan narasumber dokter spesialis yang jelas'
-        ],
-        isHoax: true,
-        explanation: 'Klaim ini adalah HOAKS. Informasi medis tidak pernah menjanjikan kesembuhan instan tanpa uji klinis dan verifikasi ilmiah.'
+        prompt: '「みず」 (Mizu) means...',
+        options: ['Food', 'Water', 'Tea', 'Coffee'],
+        correctIndex: 1,
+        explanation: 'みず (Mizu) berarti "Air".'
       },
       {
-        headline: 'Kementerian Pendidikan Merilis Jadwal Resmi Libur Sekolah Semester Ganjil 2026',
-        source: 'Portal Resmi Kemendikbudristek (kemdikbud.go.id)',
-        clues: [
-          'Domain terdaftar resmi (.go.id)',
-          'Bahasa lugas, objektif, dan terdapat tanggal surat edaran',
-          'Dikonfirmasi oleh kanal komunikasi pemerintah terverifikasi'
-        ],
-        isHoax: false,
-        explanation: 'Ini adalah FAKTA. Sumber terpercaya dari domain resmi pemerintah (.go.id).'
+        prompt: '「たべもの」 (Tabemono) means...',
+        options: ['Drink', 'Food', 'Snack', 'Bento'],
+        correctIndex: 1,
+        explanation: 'たべもの (Tabemono) berarti "Makanan".'
       },
       {
-        headline: 'Segera Bagikan Pesan Ini ke 10 Teman Anda untuk Mencegah Akun WhatsApp Ditutup Nanti Malam!',
-        source: 'Pesan Berantai Tidak Jelas Asal-usulnya',
-        clues: [
-          'Taktik menebar rasa takut (fear-mongering)',
-          'Meminta penerima menyebarkan ulang (chain message)',
-          'Tidak ada pengumuman di blog resmi WhatsApp / Meta'
-        ],
-        isHoax: true,
-        explanation: 'Pemberitahuan ini adalah HOAKS klasik tipe pesan berantai berulang untuk menakut-nakuti pengguna.'
+        prompt: '「ほん」 (Hon) means...',
+        options: ['Magazine', 'Newspaper', 'Book', 'Comic'],
+        correctIndex: 2,
+        explanation: 'ほん (Hon) berarti "Buku".'
+      },
+      {
+        prompt: '「がっこう」 (Gakkou) means...',
+        options: ['School', 'Station', 'Hospital', 'Park'],
+        correctIndex: 0,
+        explanation: 'がっこう (Gakkou) berarti "Sekolah".'
+      },
+      {
+        prompt: '「えき」 (Eki) means...',
+        options: ['Airport', 'Bus Stop', 'Station', 'Port'],
+        correctIndex: 2,
+        explanation: 'えき (Eki) berarti "Stasiun".'
       }
     ]
   },
   {
     id: 5,
-    category: 'Deteksi Hoaks',
-    categoryBadge: '🛡️ Kategori 2: Deteksi Hoaks',
-    title: 'Waspada Phishing & Tautan Palsu',
+    category: 'Sentence Building',
+    categoryBadge: '🧩 Kategori 5: Sentence',
+    title: 'Build Your First Japanese Sentences',
     npc: {
-      name: 'Pak RT Joko',
-      role: 'Ketua RW Peduli Keamanan',
-      emoji: '👮‍♂️',
+      name: 'Akira',
+      role: 'Local Guide',
+      emoji: '🗣️',
       shirtColor: 0x10b981, // Emerald
       pantsColor: 0x1e293b,
-      pos: { x: -14, z: -55 }
+      pos: { x: -16, z: -16 } // Safe on NW sidewalk, away from props
     },
-    introDialogue: 'Selamat siang anak muda! Akhir-akhir ini banyak warga melapor menerima pesan hadiah undian jutaan rupiah lewat SMS/WA. Bisakah kamu memilah mana yang resmi dan mana jebakan?',
-    completedDialogue: 'Mantap! Sekarang warga kita makin aman dari jeratan modus phishing dan pencurian data pribadi!',
+    introDialogue: 'こんにちは！ To communicate effectively, we must construct sentences. Let\'s practice some basic Japanese sentence structures (Subject-Object-Verb).',
+    completedDialogue: 'Yatta! You successfully built Japanese sentences. You are getting really good at this!',
     isCompleted: false,
-    minigameType: 'HOAX_DETECTOR',
-    questions: [
+    minigameType: 'SENTENCE_BUILDER',
+    puzzles: [
       {
-        headline: 'Selamat! Nomor Anda terpilih memenangkan saldo 100 Juta. Klik link: bit.ly/dana-kaget-gratis-klaim sekarang juga!',
-        source: 'SMS dari nomor pribadi tak dikenal (+628xxxx)',
-        clues: [
-          'Menggunakan shortlink yang menyembunyikan alamat asli',
-          'Meminta klik tautan mencurigakan untuk mencuri kredensial (phishing)',
-          'Nomor pengirim bukan nomor resmi (masking id) institusi'
-        ],
-        isHoax: true,
-        explanation: 'Ini adalah HOAKS / PHISHING. Jangan pernah klik tautan undian dari nomor tak dikenal yang meminta data login.'
+        instruction: 'Meaning: "I am a student."',
+        words: ['わたしは', 'がくせいです。'],
+        targetSentence: 'わたしは がくせいです。',
+        explanation: 'Dalam bahasa Jepang, pola kalimat sederhana adalah Topik + は (wa) + Keterangan/Predikat + です (desu).'
       },
       {
-        headline: 'Bank Sentral Mengingatkan Warga untuk Menjaga Kerahasiaan Kode OTP dan PIN Rekening',
-        source: 'Kanal Edukasi Publik Bank Indonesia (bi.go.id)',
-        clues: [
-          'Edukasi literasi keuangan tanpa meminta data nasabah',
-          'Sesuai dengan standar keamanan perbankan resmi',
-          'Tidak ada iming-iming hadiah atau ancaman pemblokiran'
-        ],
-        isHoax: false,
-        explanation: 'Ini FAKTA. Bank resmi tidak pernah meminta kode OTP atau PIN pribadi kepada nasabah.'
+        instruction: 'Meaning: "I drink water."',
+        words: ['わたしは', 'みずを', 'のみます。'],
+        targetSentence: 'わたしは みずを のみます。',
+        explanation: 'Pola kalimat dasar dengan kata kerja: Topik + は + Objek + を (o) + Kata Kerja (Verb).'
+      },
+      {
+        instruction: 'Meaning: "I go to school."',
+        words: ['わたしは', 'がっこうへ', 'いきます。'],
+        targetSentence: 'わたしは がっこうへ いきます。',
+        explanation: 'Pola kalimat arah: Topik + は + Tempat + へ (e) + Kata Kerja Pindah (Pergi/Datang/Pulang).'
       }
     ]
   },
   {
     id: 6,
-    category: 'Deteksi Hoaks',
-    categoryBadge: '🛡️ Kategori 2: Deteksi Hoaks',
-    title: 'Konteks Foto & Deepfake',
+    category: 'Culture & Etiquette',
+    categoryBadge: '🎎 Kategori 6: Budaya',
+    title: 'Japanese Culture & Etiquette',
     npc: {
-      name: 'Nina',
-      role: 'Kreator Konten Digital',
-      emoji: '🎨',
+      name: 'Yuki',
+      role: 'Duta Budaya',
+      emoji: '👘',
       shirtColor: 0x8b5cf6, // Violet
       pantsColor: 0x334155,
-      pos: { x: 14, z: 55 }
+      pos: { x: 18, z: -14 } // Safe on NE sidewalk, outside QFRONT building
     },
-    introDialogue: 'Hai! Sebagai pembuat konten visual, aku sering mendapati gambar yang dipotong konteksnya (*misleading context*) hingga foto buatan AI. Ayo latih ketelitianmu!',
-    completedDialogue: 'Kemampuan verifikasi visualmu top banget! Selalu lakukan reverse image search ya sebelum menyebarkan foto viral!',
+    introDialogue: 'Konnichiwa! Memahami bahasa juga berarti memahami budayanya. Mari kita uji pengetahuanmu tentang kebiasaan dan etika sederhana di Jepang!',
+    completedDialogue: 'Luar biasa! Pengetahuan budayamu sangat baik. Teruslah belajar untuk menghargai keindahan etika Jepang!',
     isCompleted: false,
     minigameType: 'HOAX_DETECTOR',
     questions: [
       {
-        headline: 'Geger! Ditemukan Kota Emas Kuno di Dasar Laut Indonesia dengan Gedung Utuh Berkilau!',
-        source: 'Unggahan TikTok dengan Foto Hasil Generator AI (Tampak Sangat Halus & Simetris Ganjil)',
+        headline: 'Di Jepang, membungkuk (ojigi) dapat digunakan sebagai bentuk salam, terima kasih, atau permohonan maaf.',
+        source: 'Pengamatan Etika Sehari-hari',
         clues: [
-          'Tekstur gambar terlihat tidak natural, pencahayaan terlalu fantastis',
-          'Tidak ada catatan dari arkeolog atau ekspedisi riset bawah air BRIN',
-          'Gambar identik dengan hasil prompt software AI Art'
-        ],
-        isHoax: true,
-        explanation: 'Ini HOAKS visual (manipulasi AI). Penemuan situs purbakala wajib melalui verifikasi arkeolog resmi.'
-      },
-      {
-        headline: 'Ilmuwan Mengembangkan Robot Penyelam untuk Memetakan Terumbu Karang Nusantara',
-        source: 'Portal Berita Iptek Nasional & Akun Riset Kampus',
-        clues: [
-          'Foto memperlihatkan purwarupa dengan logo universitas/BRIN',
-          'Mencantumkan nama ketua tim riset dan publikasi jurnal',
-          'Memiliki rekam jejak riset yang dapat diverifikasi'
+          'Merupakan bentuk penghormatan',
+          'Sering terlihat di berbagai situasi sosial',
+          'Memiliki beberapa tingkat kedalaman sesuai tingkat hormat'
         ],
         isHoax: false,
-        explanation: 'Ini adalah FAKTA berbasis liputan perkembangan sains dan teknologi.'
+        explanation: 'Ini adalah FAKTA. Membungkuk adalah bagian fundamental dari etika Jepang.'
+      },
+      {
+        headline: 'Membuang sampah sembarangan di jalan merupakan kebiasaan yang dianjurkan di Jepang.',
+        source: 'Mitos atau Gosip Turis',
+        clues: [
+          'Jalanan di Jepang terkenal sangat bersih',
+          'Warga terbiasa membawa kembali sampah mereka ke rumah',
+          'Terdapat aturan pemilahan sampah yang ketat'
+        ],
+        isHoax: true,
+        explanation: 'Ini adalah MISKONSEPSI (HOAKS). Membuang sampah sembarangan sangat dilarang dan tidak sesuai dengan budaya kedisiplinan di Jepang.'
+      },
+      {
+        headline: 'Melepas sepatu sebelum memasuki rumah atau tempat-tempat tradisional tertentu adalah kebiasaan wajib di Jepang.',
+        source: 'Etika Masuk Rumah (Genkan)',
+        clues: [
+          'Terdapat area khusus (genkan) untuk melepas sepatu',
+          'Membantu menjaga kebersihan bagian dalam ruangan',
+          'Sering dijumpai di kuil, ryokan, atau rumah pribadi'
+        ],
+        isHoax: false,
+        explanation: 'Ini adalah FAKTA. Melepas sepatu sebelum masuk ke dalam rumah adalah etika yang sangat dijaga di Jepang.'
+      },
+      {
+        headline: 'Berbicara sangat keras dan mengangkat telepon di dalam kereta merupakan perilaku yang dianjurkan.',
+        source: 'Perilaku yang Sering Dilarang',
+        clues: [
+          'Terdapat papan pengumuman untuk me-mode heningkan ponsel',
+          'Penumpang umumnya membaca atau tidur dengan tenang',
+          'Mengganggu kenyamanan penumpang lain'
+        ],
+        isHoax: true,
+        explanation: 'Ini adalah MISKONSEPSI (HOAKS). Berbicara keras atau menelepon di kereta dianggap sangat tidak sopan.'
+      },
+      {
+        headline: 'Mengantre dengan tertib untuk masuk ke dalam kereta atau saat berbelanja merupakan hal yang umum.',
+        source: 'Budaya Disiplin Publik',
+        clues: [
+          'Terdapat garis panduan antrean di stasiun',
+          'Warga menunggu giliran dengan sabar',
+          'Sangat dihormati sebagai bentuk keteraturan'
+        ],
+        isHoax: false,
+        explanation: 'Ini adalah FAKTA. Budaya antre (disiplin) adalah salah satu ciri khas yang sangat dipegang teguh oleh masyarakat Jepang.'
       }
     ]
   },
 
-  // ==================== KATEGORI 3: KALIMAT EFEKTIF & PEMAHAMAN ====================
   {
     id: 7,
-    category: 'Kalimat Efektif',
-    categoryBadge: '✍️ Kategori 3: Kalimat Efektif',
-    title: 'Susun Struktur SPOK',
+    category: 'Daily Conversation',
+    categoryBadge: '💬 Kategori 7: Conversation',
+    title: 'Daily Conversation',
     npc: {
-      name: 'Bu Ratna',
-      role: 'Guru Bahasa Indonesia',
-      emoji: '👩‍🏫',
-      shirtColor: 0x14b8a6, // Teal
-      pantsColor: 0x111827,
-      pos: { x: -55, z: -14 }
+      name: 'Aiko',
+      role: 'Shop Regular',
+      emoji: '🙋',
+      shirtColor: 0xf43f5e, // Rose
+      pantsColor: 0x0f172a,
+      pos: { x: 96, z: -10 } // Commercial district, near Bakery
     },
-    introDialogue: 'Selamat datang di area sekolah! Kalimat yang baik memiliki struktur yang jelas (Subjek, Predikat, Objek, Keterangan). Mari bantu murid-murid menyusun kalimat efektif!',
-    completedDialogue: 'Hebat! Kalimat yang kamu susun mengalir dengan sangat rapi, jelas, dan mudah dipahami.',
+    introDialogue: 'Konnichiwa! Ready to chat? Let\'s practice some simple daily conversation phrases that you\'ll hear everywhere in Japan.',
+    completedDialogue: 'Subarashii! Now you can easily respond in basic daily conversations. Keep up the good work!',
     isCompleted: false,
-    minigameType: 'SENTENCE_BUILDER',
-    puzzles: [
+    minigameType: 'VOCAB_CHOICE',
+    questions: [
       {
-        instruction: 'Susun kata-kata berikut menjadi kalimat efektif yang benar:',
-        words: ['Siswa', 'membaca', 'buku', 'di', 'perpustakaan'],
-        targetSentence: 'Siswa membaca buku di perpustakaan',
-        explanation: 'Subjek: Siswa, Predikat: membaca, Objek: buku, Keterangan tempat: di perpustakaan.'
+        prompt: '「お元気ですか？」 (Ogenki desu ka?) berarti...',
+        options: ['How are you?', 'Thank you', 'Excuse me', 'Good morning'],
+        correctIndex: 0,
+        explanation: '「お元気ですか？」 (Ogenki desu ka?) adalah ungkapan untuk menanyakan "Apa kabar?".'
       },
       {
-        instruction: 'Susun kalimat imbauan tata tertib kota:',
-        words: ['Warga', 'membuang', 'sampah', 'pada', 'tempatnya'],
-        targetSentence: 'Warga membuang sampah pada tempatnya',
-        explanation: 'Kalimat berstruktur lugas tanpa ada kata yang bertele-tele.'
+        prompt: '「はい」 (Hai) berarti...',
+        options: ['No', 'Maybe', 'Yes', 'Wait'],
+        correctIndex: 2,
+        explanation: '「はい」 (Hai) berarti "Ya / Yes".'
+      },
+      {
+        prompt: '「いいえ」 (Iie) berarti...',
+        options: ['Yes', 'No', 'Thank you', 'Sorry'],
+        correctIndex: 1,
+        explanation: '「いいえ」 (Iie) berarti "Tidak / No".'
+      },
+      {
+        prompt: '「すみません」 (Sumimasen) berarti...',
+        options: ['Good night', 'Goodbye', 'Excuse me / Sorry', 'Hello'],
+        correctIndex: 2,
+        explanation: '「すみません」 (Sumimasen) dapat berarti "Permisi" atau "Maaf" tergantung konteks.'
+      },
+      {
+        prompt: '「またね」 (Mata ne) berarti...',
+        options: ['Hello', 'See you', 'Thank you', 'Yes'],
+        correctIndex: 1,
+        explanation: '「またね」 (Mata ne) adalah ungkapan kasual yang berarti "Sampai jumpa / See you".'
       }
     ]
   },
   {
     id: 8,
-    category: 'Kalimat Efektif',
-    categoryBadge: '✍️ Kategori 3: Kalimat Efektif',
-    title: 'Pangkas Kata Mubazir',
+    category: 'Situational Japanese',
+    categoryBadge: '🗣️ Kategori 8: Situations',
+    title: 'Situational Japanese',
     npc: {
-      name: 'Andi',
-      role: 'Penulis Novel',
-      emoji: '🖋️',
+      name: 'Takeshi',
+      role: 'Commuter',
+      emoji: '💼',
       shirtColor: 0xe11d48, // Rose
       pantsColor: 0x1e1b4b,
-      pos: { x: 55, z: 14 }
+      pos: { x: -10, z: -130 } // Tokyo Station Plaza
     },
-    introDialogue: 'Halo kawan! Sering kali kita tanpa sadar menggunakan kata-kata boros seperti "sangat amat indah sekali". Di draf naskahku, bantu aku memilih kalimat yang paling hemat dan efektif!',
-    completedDialogue: 'Karya tulis yang efektif terasa jauh lebih hidup dan bertenaga! Terima kasih banyak atas bantuanmu!',
+    introDialogue: 'Konnichiwa! When you are out and about in Japan, being able to express yourself is very useful. Let\'s practice constructing sentences for real-life situations!',
+    completedDialogue: 'Yatta! You can now express your needs and ask questions clearly. Have a safe trip!',
     isCompleted: false,
-    minigameType: 'VOCAB_CHOICE',
-    questions: [
+    minigameType: 'SENTENCE_BUILDER',
+    puzzles: [
       {
-        prompt: 'Pilihlah kalimat yang TIDAK mengandung pemborosan kata (mubazir):',
-        options: [
-          'Pemandangan matahari terbenam itu sangat indah sekali.',
-          'Pemandangan matahari terbenam itu sangat indah.'
-        ],
-        correctIndex: 1,
-        explanation: 'Penggunaan kata "sangat" dan "sekali" secara bersamaan merupakan bentuk redundansi (pemborosan kata).'
+        instruction: 'Meaning: "Hello, I am Hanif."',
+        words: ['こんにちは、', 'わたしは', 'ハニフです。'],
+        targetSentence: 'こんにちは、 わたしは ハニフです。',
+        explanation: 'Untuk memperkenalkan diri, gunakan sapaan lalu ikuti dengan pola: わたしは [Nama] です。'
       },
       {
-        prompt: 'Mana kalimat yang paling efektif saat mengumumkan pertemuan?',
-        options: [
-          'Bapak-bapak dan ibu-ibu sekalian diharapkan hadir tepat waktu.',
-          'Para hadirin diharapkan hadir tepat waktu.'
-        ],
-        correctIndex: 1,
-        explanation: '"Hadirin" sudah bermakna jamak (semua orang yang hadir), sehingga tidak perlu ditambahi "para bapak-bapak sekalian".'
+        instruction: 'Meaning: "I want water."',
+        words: ['みずが', 'ほしいです。'],
+        targetSentence: 'みずが ほしいです。',
+        explanation: 'Untuk menyatakan keinginan (benda), gunakan pola: [Benda] が ほしいです (ga hoshii desu).'
       },
       {
-        prompt: 'Pilihlah kalimat yang logis dan efisien:',
-        options: [
-          'Demi untuk menjaga kesehatan, kita harus rajin berolahraga.',
-          'Demi menjaga kesehatan, kita harus rajin berolahraga.'
-        ],
-        correctIndex: 1,
-        explanation: 'Kata "demi" dan "untuk" mempunyai arti yang sama. Cukup gunakan salah satu saja.'
+        instruction: 'Meaning: "Where is the station?"',
+        words: ['えきは', 'どこですか？'],
+        targetSentence: 'えきは どこですか？',
+        explanation: 'Untuk menanyakan lokasi, gunakan pola: [Tempat] は どこですか (wa doko desu ka?).'
       }
     ]
   },
   {
     id: 9,
-    category: 'Kalimat Efektif',
-    categoryBadge: '✍️ Kategori 3: Kalimat Efektif',
-    title: 'Konjungsi Paragraf Logis',
+    category: 'Culture & Communication',
+    categoryBadge: '🗣️ Kategori 9: Communication',
+    title: 'Culture & Communication',
     npc: {
-      name: 'Maya',
-      role: 'Podcaster & Penyiar Radio',
-      emoji: '🎙️',
+      name: 'Miyuki',
+      role: 'Local Student',
+      emoji: '⛩️',
       shirtColor: 0x6366f1, // Indigo
       pantsColor: 0x0f172a,
-      pos: { x: 0, z: -14 } // Panggung Alun-Alun Pusat
+      pos: { x: 45, z: -45 } // Tokyo Tower / NE area approach
     },
-    introDialogue: 'Hai petualang kota! Di siaran radio sore ini, aku ingin menyampaikan pesan edukasi untuk para pendengar. Bantu aku memilih kata sambung (konjungsi) yang tepat agar alurnya runtut ya!',
-    completedDialogue: 'Wah, luar biasa! 9 Misi Kota Cerdas telah kamu tuntaskan dengan sempurna! Kamu resmi dinobatkan sebagai Duta Literasi Kota Cerdas!',
+    introDialogue: 'Konnichiwa! Sebelum tantangan komunikasi terakhirmu, mari kita pastikan kamu memahami bagaimana bahasa dan budaya saling terhubung. Ayo uji pemahamanmu!',
+    completedDialogue: 'Sempurna! Kamu telah menyelesaikan semua tahap persiapan bahasa dan budaya. Kamu kini siap berkomunikasi di Jepang!',
     isCompleted: false,
-    minigameType: 'VOCAB_CHOICE',
+    minigameType: 'HOAX_DETECTOR',
     questions: [
       {
-        prompt: '"Hujan lebat mengguyur kota sejak pagi, [...] acara festival literasi tetap berlangsung meriah."',
-        options: ['namun', 'sehingga'],
-        correctIndex: 0,
-        explanation: 'Konjungsi "namun" menyatakan hubungan pertentangan yang tepat antarkalimat.'
+        headline: 'Mengucapkan terima kasih dapat dilakukan dengan mengatakan 「ありがとう」 (Arigatou).',
+        source: 'Kosakata Dasar',
+        clues: [
+          'Merupakan ungkapan sehari-hari',
+          'Berlaku untuk situasi umum'
+        ],
+        isHoax: false,
+        explanation: 'FAKTA. 「ありがとう」 adalah cara paling umum untuk mengucapkan terima kasih.'
       },
       {
-        prompt: '"Kita harus memverifikasi setiap informasi digital [...] terhindar dari bahaya hoaks."',
-        options: ['agar', 'padahal'],
-        correctIndex: 0,
-        explanation: 'Konjungsi "agar" (atau "supaya") menyatakan hubungan tujuan/maksud.'
+        headline: '「こんにちは」 (Konnichiwa) digunakan untuk mengatakan selamat pagi.',
+        source: 'Sapaan Waktu',
+        clues: [
+          'Diucapkan pada siang hari',
+          'Bukan sapaan pertama di pagi hari'
+        ],
+        isHoax: true,
+        explanation: 'HOAKS. 「こんにちは」 berarti Halo atau Selamat Siang. Untuk pagi hari, gunakan 「おはよう」 (Ohayou).'
       },
       {
-        prompt: '"Rudi rajin membaca buku setiap hari, [...] wawasannya semakin luas."',
-        options: ['sehingga', 'melainkan'],
-        correctIndex: 0,
-        explanation: 'Konjungsi "sehingga" menyatakan hubungan akibat/konsekuensi logis dari rajin membaca.'
+        headline: '「すみません」 (Sumimasen) dapat digunakan untuk meminta maaf atau menarik perhatian seseorang.',
+        source: 'Situasi Komunikasi',
+        clues: [
+          'Sangat serbaguna di Jepang',
+          'Dipakai di restoran atau saat berpapasan'
+        ],
+        isHoax: false,
+        explanation: 'FAKTA. 「すみません」 dapat berarti "Permisi" saat memanggil pelayan, atau "Maaf" secara ringan.'
+      },
+      {
+        headline: 'Berbicara keras di kereta merupakan cara yang dianjurkan untuk berkomunikasi dengan teman.',
+        source: 'Etika Publik',
+        clues: [
+          'Kereta sangat sepi',
+          'Mengganggu penumpang lain'
+        ],
+        isHoax: true,
+        explanation: 'HOAKS. Berbicara keras di dalam transportasi umum sangat tidak dianjurkan di Jepang.'
+      },
+      {
+        headline: 'Memahami budaya membantu kita berkomunikasi dengan lebih baik menggunakan bahasa asing.',
+        source: 'Pemahaman Lintas Budaya',
+        clues: [
+          'Bahasa dipengaruhi oleh kebiasaan',
+          'Mencegah kesalahpahaman'
+        ],
+        isHoax: false,
+        explanation: 'FAKTA. Bahasa adalah bagian dari budaya. Memahami konteks budaya membuat komunikasi menjadi natural dan sopan.'
       }
     ]
   }
